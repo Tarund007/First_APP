@@ -62,6 +62,53 @@ class _MyhomeState extends State<Myhome> {
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: PopupMenuButton(
+          color: Colors.white,
+          icon: Icon(Icons.menu),
+          itemBuilder: (context)=> [
+            PopupMenuItem(child: TextButton(
+              child: Text('Project',style: TextStyle(
+                color: Colors.black,
+              ),),
+              onPressed: (){
+                Navigator.pushNamed(context, 'projects');
+              },
+            ),
+              value: 1,
+            ),
+            PopupMenuItem(child: TextButton(
+              child: Text('About Me',style: TextStyle(
+                color: Colors.black,
+              ),),
+              onPressed: (){
+                Navigator.pushNamed(context, 'about');
+              },
+            ),
+              value: 2,
+            ),
+            PopupMenuItem(child: TextButton(
+              child: Text('Expectation',style: TextStyle(
+                color: Colors.black,
+              ),),
+              onPressed: (){
+                Navigator.pushNamed(context, 'Sliding screen');
+              },
+            ),
+              value: 2,
+            ),
+            PopupMenuItem(child: TextButton(
+              child: Text('Reality',style: TextStyle(
+                color: Colors.black,
+              ),),
+              onPressed: (){
+                Navigator.pushNamed(context, 'Sliding screen 2');
+              },
+            ),
+              value: 2,
+            )
+
+          ],
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
 
@@ -73,7 +120,7 @@ class _MyhomeState extends State<Myhome> {
           // Enable snapping. This is true by default.
           snap: true,
           // Set custom snapping points.
-          snappings: [0.05, 0.8, 1.0],
+          snappings: [0.05, 0.65, 1.0],
           // Define to what the snappings relate to. In this case,
           // the total available space that the sheet can expand to.
           positioning: SnapPositioning.relativeToAvailableSpace,
@@ -100,7 +147,9 @@ class _MyhomeState extends State<Myhome> {
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.80),
                 child: Column(
                   children: [Text('Tarun Dinkar', style: TextStyle(
-                  color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold)),
+                  color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold)),
                     SizedBox(
                       height: 2,
                     ),
@@ -110,9 +159,7 @@ class _MyhomeState extends State<Myhome> {
                         ),),
                   ],
                 ),
-
               ),
-
             ],
           ),
         ),
@@ -167,16 +214,6 @@ class _MyhomeState extends State<Myhome> {
                     SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                      children: [
-                        myassign(Icons.android, "Android App"),
-                        myassign(Icons.android, "Android App")
-
-                      ],
-                    ),
-
                   ],
                 )
               ],

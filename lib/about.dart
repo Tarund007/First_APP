@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class MyAbout extends StatefulWidget {
   const MyAbout({Key? key}) : super(key: key);
 
@@ -9,6 +9,16 @@ class MyAbout extends StatefulWidget {
 }
 
 class _MyAboutState extends State<MyAbout> {
+
+_launchurl() async{
+  const url='https://www.linkedin.com/in/tarun-dinkar-14a5ba252/';
+  if(await canLaunchUrl(url as Uri)){
+    await launchUrl(url as Uri);
+
+  }else{
+    throw "could not launch the url";
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +29,9 @@ class _MyAboutState extends State<MyAbout> {
         backgroundColor: Colors.transparent,
         ),
         body: Container(
-          child: Stack(
+          alignment: Alignment.center,
+          child: SingleChildScrollView(
+            child: Stack(
             children: [
               Container(
                 margin: EdgeInsets.only(bottom: 10, right: 1, left: 1),
@@ -35,9 +47,10 @@ class _MyAboutState extends State<MyAbout> {
               ),
               Container(
                 alignment: Alignment.topCenter,
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.20),
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.10),
                 child: Column(
                   children: [
+
                     Text('Hello I Am', style: TextStyle(
                       color: Colors.teal.shade50, fontSize: 60, fontWeight: FontWeight.bold
                     ),),
@@ -54,7 +67,7 @@ class _MyAboutState extends State<MyAbout> {
                     Text('(Beginner)', style: TextStyle(color: Colors.white, fontSize: 20,
                     ),),
                     SizedBox(
-                      height: 350,
+                      height: 250,
                     ),
                     SizedBox(
                       width: 120,
@@ -68,21 +81,14 @@ class _MyAboutState extends State<MyAbout> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                       IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.instagram,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
+                        FontAwesomeIcons.linkedin,color: Colors.white,
+                      ),),
+                      IconButton(onPressed: () {
+                      },
+                          icon: Icon(
                         FontAwesomeIcons.github,color: Colors.white,
                       )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.twitter,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.linkedin,color: Colors.white,
-                      )),
-                      IconButton(onPressed: (){}, icon: Icon(
-                        FontAwesomeIcons.facebook,color: Colors.white,
-                      )),
-                    ],)
+                    ],),
                   ],
 
                 ),
@@ -91,6 +97,7 @@ class _MyAboutState extends State<MyAbout> {
 
             ],
           ),
+    )
         ) ,
 
     );
